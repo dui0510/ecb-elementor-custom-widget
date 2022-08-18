@@ -1,0 +1,16 @@
+/**
+ * All of the CSS for your public-facing ACF Repeater functionality should be
+ * included in this file.
+ */
+
+.acf-repeater ul {
+    list-style: none !important;
+    padding: 0;
+}
+.acf-repeater li {
+    display: flex;
+    margin-bottom: 15px;
+}
+.acf-repeater .image-holder {
+    flex: 0 0 30%;
+}

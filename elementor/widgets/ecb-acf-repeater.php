@@ -12,18 +12,31 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  */
-class Ecb_Acf_Text extends Widget_Base {
+class Ecb_Acf_Repeater extends Widget_Base {
 
-	/**
-	 * ACF Text Field Variable Name
+
+    /**
+	 * ACF Repeater Field Variable Name
 	 *
 	 */
-	private $textName = 'ecb_text';
-	
+	private $repeaterName = 'ecb_repeater';
+	private $imageName = 'ecb_image';
+	private $descriptionName = 'ecb_description';
+
+	/**
+	 * Retrieve the widget name.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 *
+	 * @return string Widget name.
+	 */
+
 	public function get_name() {
-		return 'acf-text';
+		return 'acf-repeater';
 	}
-	
+
 	/**
 	 * Retrieve the widget title.
 	 *
@@ -34,7 +47,7 @@ class Ecb_Acf_Text extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'ACF Text', 'elementor-acf-text' );
+		return __( 'ACF Repeater', 'elementor-acf-repeater' );
 	}
 
 	/**
@@ -80,7 +93,7 @@ class Ecb_Acf_Text extends Widget_Base {
 	 * @return array Widget scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return [ 'elementor-acf-text' ];
+		return [ 'elementor-acf-repeater' ];
 	}
 
 	/**
@@ -94,18 +107,42 @@ class Ecb_Acf_Text extends Widget_Base {
 	 */
 	protected function render() {
 
-		// Get Value on ACF Text Field.
-		$ecb_text = get_field($this->textName);
-		
-		// Check Value if exist.
-		if ( $ecb_text ) {
-			echo '<div class="'. $this->get_name() .'">';
-			echo $ecb_text;
-			echo '</div>';	
-		} else {
+        $output = '';
+
+        // Check rows exists.
+        if( have_rows($this->repeaterName) ):
+            // Loop through rows.
+            $output .= '<ul>';
+            while( have_rows($this->repeaterName) ) : the_row();
+                // Load sub field value.
+                $output .= '<li>';
+
+                    // Get Image from ACF Field
+                    $image = get_sub_field($this->imageName);
+                    // Get Description from ACF Field
+                    $description = get_sub_field($this->descriptionName);
+
+                    $output .= '<div class="image-holder"><img src="' . $image . '"/></div>';
+                    $output .= '<div class="description-holder">' . $description . '</div>';
+
+                $output .= '</li>';
+            // End loop.
+            endwhile;
+            $output .= '</ul>';
+
+            // Display Output
+            echo 
+            '<div class="' . $this->get_name() . '">' 
+            . $output . 
+            '</div>';
+
+        else :
             // Display if no value
-			echo 'No Value on ACF Text Widgets';
-		}
+            echo 'No Value on ACF Repeater Widgets';
+            // Do something...
+        endif;
+
+       
 
 	}
 
