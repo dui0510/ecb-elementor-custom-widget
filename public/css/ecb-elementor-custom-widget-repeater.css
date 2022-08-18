@@ -7,10 +7,28 @@
     list-style: none !important;
     padding: 0;
 }
-.acf-repeater li {
+.acf-repeater ul li {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
-.acf-repeater .image-holder {
+.acf-repeater ul li .image-holder {
     flex: 0 0 30%;
+    margin-right: 15px;
+}
+.acf-repeater ul li .image-holder img {
+    width: 100%;
+}
+
+@media (max-width: 980px) {
+
+    .acf-repeater ul li {
+        flex-wrap: wrap;
+    }
+    
+    .acf-repeater ul li .image-holder {
+        flex: 0 0 100%;
+        margin-right: 0px;
+    }
+    
+
 }
