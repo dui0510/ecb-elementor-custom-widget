@@ -10,6 +10,7 @@
 .acf-repeater ul li {
     display: flex;
     margin-bottom: 15px;
+    margin-right: 15px;
 }
 .acf-repeater ul li .image-holder {
     flex: 0 0 30%;
@@ -20,9 +21,10 @@
 
 @media (max-width: 980px) {
 
-    .acf-repeater li {
+    .acf-repeater ul li {
         flex-wrap: wrap;
         margin-bottom: 20px;
+        margin-right: 0px;
     }
     .acf-repeater ul li .image-holder {
         flex: 0 0 100%;
