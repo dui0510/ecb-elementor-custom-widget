@@ -74,6 +74,8 @@ class Ecb_Elementor_Custom_Widget_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/ecb-elementor-custom-widget-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name . '-text', plugin_dir_url( __FILE__ ) . 'css/ecb-elementor-custom-widget-text.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name . '-repeater', plugin_dir_url( __FILE__ ) . 'css/ecb-elementor-custom-widget-repeater.css', array(), $this->version, 'all' );
 
 	}
 
@@ -113,9 +115,11 @@ class Ecb_Elementor_Custom_Widget_Public {
 	public function register_widgets( $widgets_manager ) {
 		// Its is now safe to include Widgets files
 		require_once  plugin_dir_path( dirname( __FILE__ ) ) . 'elementor/widgets/ecb-acf-text.php' ;
+		require_once  plugin_dir_path( dirname( __FILE__ ) ) . 'elementor/widgets/ecb-acf-repeater.php' ;
 
 		// Register Widgets
 		$widgets_manager->register( new Ecb_Acf_Text() );
+		$widgets_manager->register( new Ecb_Acf_Repeater() );
 
 	}
 
