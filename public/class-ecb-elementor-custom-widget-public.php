@@ -99,5 +99,24 @@ class Ecb_Elementor_Custom_Widget_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ecb-elementor-custom-widget-public.js', array( 'jquery' ), $this->version, false );
 
 	}
+	
+	/**
+	 * Register Widgets
+	 *
+	 * Register new Elementor widgets.
+	 *
+	 * @since 1.2.0
+	 * @access public
+	 *
+	 * @param Widgets_Manager $widgets_manager Elementor widgets manager.
+	 */
+	public function register_widgets( $widgets_manager ) {
+		// Its is now safe to include Widgets files
+		require_once  plugin_dir_path( dirname( __FILE__ ) ) . 'elementor/widgets/ecb-acf-text.php' ;
+
+		// Register Widgets
+		$widgets_manager->register( new Ecb_Acf_Text() );
+
+	}
 
 }

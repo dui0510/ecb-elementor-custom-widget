@@ -58,6 +58,7 @@ function deactivate_ecb_elementor_custom_widget() {
 register_activation_hook( __FILE__, 'activate_ecb_elementor_custom_widget' );
 register_deactivation_hook( __FILE__, 'deactivate_ecb_elementor_custom_widget' );
 
+
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.

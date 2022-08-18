@@ -122,9 +122,16 @@ class Ecb_Elementor_Custom_Widget {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-ecb-elementor-custom-widget-public.php';
 
+		 /**
+		 * The class responsible for defining elementor dependency validator functionality
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ecb-elementor-custom-widget-validator.php';
+
 		$this->loader = new Ecb_Elementor_Custom_Widget_Loader();
 
 	}
+
 
 	/**
 	 * Define the locale for this plugin for internationalization.
@@ -172,6 +179,7 @@ class Ecb_Elementor_Custom_Widget {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'elementor/widgets/register', $plugin_public, 'register_widgets' );
 
 	}
 
