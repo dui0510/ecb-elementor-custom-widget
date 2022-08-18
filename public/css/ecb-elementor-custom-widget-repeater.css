@@ -14,3 +14,15 @@
 .acf-repeater .image-holder {
     flex: 0 0 30%;
 }
+
+
+@media only screen and (min-width: 40.063em) {
+
+    .acf-repeater li {
+        flex-wrap: wrap;
+    }
+    .acf-repeater .image-holder {
+        flex: 0 0 100%;
+    }
+
+}
